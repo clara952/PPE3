@@ -5,6 +5,7 @@
  */
 package com.mycompany.ppe3;
 
+import com.mycompany.ppe3.Tests.BDD;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -71,7 +72,10 @@ public class FenetreClient extends javax.swing.JFrame {
             Logger.getLogger(BDD.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+    /**
+     * Méthode pour ajouter un client
+     * @return 
+     */
     public String ajouterClient(){
         String erreur = "rien";
         //Vérifier que le client en question n'existe pas déjà
@@ -95,7 +99,9 @@ public class FenetreClient extends javax.swing.JFrame {
         
         return erreur;
     }
-    
+    /**
+     * Méthode pour modifier un client
+     */
     public void modificationClient(){
         
         String sql = "update client set nomClient = '" + jTextFieldNom.getText()+ "', prenomClient = '" + jTextFieldPrenom.getText() + "', emailClient = '" + jTextFieldEmail.getText() + "', telClient = '" + jTextFieldTel.getText() + "' where idClient = " + idClient;
@@ -278,7 +284,10 @@ public class FenetreClient extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(619, 283));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Action à faire quand la fenêtre est activée
+     * @param evt 
+     */
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         if (fenetre == 1) {         //Fênetre d'affichage des informations du client
             jLabelTitre.setText("Données du client");
@@ -296,11 +305,17 @@ public class FenetreClient extends javax.swing.JFrame {
             jLabelTitre.setText("Ajouter client");  
         }
     }//GEN-LAST:event_formWindowActivated
-
+    /**
+     * Bouton pour fermer la fenêtre
+     * @param evt 
+     */
     private void jButtonAnnulerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAnnulerMouseClicked
         this.dispose();
     }//GEN-LAST:event_jButtonAnnulerMouseClicked
-
+    /**
+     * Bouton pour confirmer l'ajour/la modification et ferme la fenêtre
+     * @param evt 
+     */
     private void jButtonConfirmerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConfirmerMouseClicked
         if (fenetre == 2) {     //Fenetre de modification du client
             modificationClient();

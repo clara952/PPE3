@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.ppe3;
+package com.mycompany.ppe3.Tests;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -11,6 +11,7 @@ import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.mycompany.ppe3.ConnexionBDD;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;

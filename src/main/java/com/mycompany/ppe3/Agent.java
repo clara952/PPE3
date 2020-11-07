@@ -48,17 +48,23 @@ public class Agent extends javax.swing.JFrame {
         model.addColumn("quantité");
         model.addColumn("prix total");
     }
-
+    /**
+     * Méthode retourn idAgent
+     * @return 
+     */
     public Integer getIdAgent() {
         return this.idAgent;
     }
-
+    /**
+     * Méthode récupère idAgent
+     * @param id 
+     */
     public void setIdAgent(Integer id) {
         this.idAgent = id;
     }
     
     /**
-     * Méthode afficher liste des clients
+     * Méthode pour afficher liste des clients
      */
     public void listClient(){
             String nom;
@@ -124,7 +130,10 @@ public class Agent extends javax.swing.JFrame {
         
         return idClient;
     }
-    
+    /**
+     * Méthode pour qui retourne le nom et le prénom du personnel actuellement connecté
+     * @return 
+     */
     public String nomAgent(){
         Integer idAgent = getIdAgent();
         String nomAgent = null;
@@ -139,7 +148,9 @@ public class Agent extends javax.swing.JFrame {
         }
         return nomAgent;
     }
-    
+    /**
+     * Méthode qui Complète la combo box client avec le nom de tous les clients
+     */
     public void comboBoxClient(){
         String nom;
         String prenom;
@@ -157,6 +168,10 @@ public class Agent extends javax.swing.JFrame {
             Logger.getLogger(Agent.class.getName()).log(Level.SEVERE, null, ex);
         }   
     }
+    /**
+     * Méthode qui retourne l'id du client sélectionné dans la combo box
+     * @return 
+     */
     public Integer recupererIdClientComboBox(){
         Integer idClient = 0;
         
@@ -178,7 +193,13 @@ public class Agent extends javax.swing.JFrame {
         
         return idClient;
     }
-    
+    /**
+     * Méthode pour écrire une facture
+     * @param idFacture
+     * @param nomAgent
+     * @param nomClient
+     * @param total 
+     */
     public void ecrireFacturePdf(String idFacture, String nomAgent,String nomClient, String total){
         Document document = new Document();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -707,10 +728,7 @@ public class Agent extends javax.swing.JFrame {
     private void jTabbedPaneAgentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPaneAgentMouseClicked
         
     }//GEN-LAST:event_jTabbedPaneAgentMouseClicked
-    /**
-     * Ensemble du code qui se fait quand la fenêtre est ouverte
-     * @param evt 
-     */
+    
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
 //        doubleListesPersonnel.list1();
 //        doubleListesProduit.list1();
@@ -809,7 +827,10 @@ public class Agent extends javax.swing.JFrame {
         }
         //Sinon la fênetre se ferme et la suppression du client n'est pas fait
     }//GEN-LAST:event_jButtonSupprimerClientMouseClicked
-
+    /**
+     * Action à faire lors de l'ouverture de la fenêtre
+     * @param evt 
+     */
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         listClient();
         listStock();
@@ -837,7 +858,10 @@ public class Agent extends javax.swing.JFrame {
             jTabbedPane1.setSelectedIndex(1);
         }        
     }//GEN-LAST:event_formWindowOpened
-
+    /**
+     * Bouton pour ajouter le produit selectionné dans la liste, vers le panier du client
+     * @param evt 
+     */
     private void jButtonAjouterPanierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAjouterPanierMouseClicked
         if (categorieEtProduit1.getProduitSelectionne() != null) {
             try {
@@ -867,7 +891,10 @@ public class Agent extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButtonAjouterPanierMouseClicked
-
+    /**
+     * Bouton pour suprimer le produit selectionné dans le panier
+     * @param evt 
+     */
     private void jButtonSupprimerPanierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSupprimerPanierMouseClicked
         if (jTable1.getSelectedRow() != -1) {
             Float prixpanier = Float.parseFloat(jLabelPrixPanier.getText());
@@ -880,7 +907,10 @@ public class Agent extends javax.swing.JFrame {
             model.removeRow(jTable1.getSelectedRow());
         }
     }//GEN-LAST:event_jButtonSupprimerPanierMouseClicked
-
+    /**
+     * Bouton pour confirmer l'achat des produit actuellement dans le panier, par le client afficher dans la conbo box
+     * @param evt 
+     */
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         Integer idClient = recupererIdClientComboBox();
         Integer idPersonnel = getIdAgent();

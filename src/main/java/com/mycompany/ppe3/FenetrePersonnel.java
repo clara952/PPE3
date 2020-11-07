@@ -5,6 +5,7 @@
  */
 package com.mycompany.ppe3;
 
+import com.mycompany.ppe3.Tests.BDD;
 import static com.mycompany.ppe3.FenetreClient.idClient;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -74,7 +75,10 @@ public class FenetrePersonnel extends javax.swing.JFrame {
             Logger.getLogger(BDD.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+    /**
+     * Méthode pour ajouter un personnel
+     * @return 
+     */
     public String ajouterPersonnel(){
         String erreur = "rien";
         //Vérifier que le client en question n'existe pas déjà
@@ -96,13 +100,17 @@ public class FenetrePersonnel extends javax.swing.JFrame {
         }
         return erreur;
     }
-    
+    /**
+     * Méthode pour modifier un personnel
+     */
     public void modificationPersonnel(){
         
         String sql = "update personnel set nomPersonnel = '" + jTextFieldNom.getText()+ "', prenomPersonnel = '" + jTextFieldPrenom.getText() + "', emailPersonnel = '" + jTextFieldEmail.getText() + "', telPersonnel = '" + jTextFieldTel.getText() + "', pseudo = '" + jTextFieldPseudo.getText() + "', mdp = '" + jTextFieldMDP.getText() + "', idProfil = '" + BoxIdProfil() + "' where idPersonnel = " + getIdPersonnel();
         ConnexionBDD.getInstance().requeteAction(sql);
     }
-    
+    /**
+     * Méthode qui complète la combo box avec les profils existants
+     */
     public void comboBoxProfil(){
         String tuple;
         DefaultComboBoxModel leModel = (DefaultComboBoxModel)jComboBoxProfil.getModel();
@@ -117,7 +125,10 @@ public class FenetrePersonnel extends javax.swing.JFrame {
             Logger.getLogger(BDD.class.getName()).log(Level.SEVERE, null, ex);
         }      
     }
-    
+    /**
+     * Méthode qui retourn l'id du profil choisi dans la combo box
+     * @return 
+     */
     public String BoxIdProfil(){
         String idProfil = null;
         String profil = jComboBoxProfil.getSelectedItem().toString();
@@ -132,6 +143,11 @@ public class FenetrePersonnel extends javax.swing.JFrame {
         
         return idProfil;
     }
+    /**
+     * Méthode qui retourne le libelle du profil selon l'idProfil donné
+     * @param idProfil
+     * @return 
+     */
     public String BoxLibelleProfil(String idProfil){
         String libelleProfil = null;
         String sql = "select libelleProfil from profil where idProfil = '" + idProfil + "'";
@@ -367,7 +383,10 @@ public class FenetrePersonnel extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Bouton pour confirmer la modification/l'ajout et fermer la fenêtre
+     * @param evt 
+     */
     private void jButtonConfirmerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConfirmerMouseClicked
         if (fenetre == 2) {     //Fenetre de modification du client
             modificationPersonnel();
@@ -381,11 +400,17 @@ public class FenetrePersonnel extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButtonConfirmerMouseClicked
-
+    /**
+     * Bouton pour fermer la fenêtre
+     * @param evt 
+     */
     private void jButtonAnnulerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAnnulerMouseClicked
         this.dispose();
     }//GEN-LAST:event_jButtonAnnulerMouseClicked
-
+    /**
+     * Actions à faire quand la fenêtre est ouverte
+     * @param evt 
+     */
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         if (fenetre == 1) {         //Fênetre d'affichage des informations du client
             jLabelTitre.setText("Données du personnel");

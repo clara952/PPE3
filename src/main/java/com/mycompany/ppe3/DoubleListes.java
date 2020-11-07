@@ -5,6 +5,7 @@
  */
 package com.mycompany.ppe3;
 
+import com.mycompany.ppe3.Tests.BDD;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -21,11 +22,17 @@ public class DoubleListes extends javax.swing.JPanel {
     private static String nomList1;
     private static String nomList2;
     private static Integer fenetre;
-
+    /**
+     * Méthode qui retourne la fenêtre choisie (administrateur ou Agent)
+     * @return 
+     */
     public static Integer getFenetre() {
         return DoubleListes.fenetre;
     }
-
+    /**
+     * Méthode pour récupérer la fenêtre choisi selon numéro) et affiche les bonnes informations dans les listes
+     * @param fenetre 
+     */
     public static void setFenetre(Integer fenetre) {
         DoubleListes.fenetre = fenetre;
         if (fenetre == 1) {
@@ -39,19 +46,31 @@ public class DoubleListes extends javax.swing.JPanel {
             setNomList2("vente");
         }
     }
-
+    /**
+     * Méthode retourne nom List1
+     * @return 
+     */
     public static String getNomList1() {
         return nomList1;
     }
-
+    /**
+     * Méthode récupère nom List1
+     * @param nomList1 
+     */
     public static void setNomList1(String nomList1) {
         DoubleListes.nomList1 = nomList1;
     }
-
+    /**
+     * Méthode retourne nom List2
+     * @return 
+     */
     public static String getNomList2() {
         return nomList2;
     }
-
+    /**
+     * Méthode qui récupère le nom List2
+     * @param nomList2 
+     */
     public static void setNomList2(String nomList2) {
         DoubleListes.nomList2 = nomList2;
     }
@@ -87,6 +106,11 @@ public class DoubleListes extends javax.swing.JPanel {
             Logger.getLogger(BDD.class.getName()).log(Level.SEVERE, null, ex);
         }        
     }
+    /**
+     * Méthode qui retourne le nom et le prénom du personnel selon son id
+     * @param idPerso
+     * @return 
+     */
     public String nomPerso(String idPerso){
         String sql = "select nomPersonnel, prenomPersonnel from personnel where idPersonnel = " + idPerso;
         ResultSet recup = ConnexionBDD.getInstance().requeteSelection(sql);
@@ -98,6 +122,11 @@ public class DoubleListes extends javax.swing.JPanel {
         }
         return idPerso;
     }
+    /**
+     * Méthode qui retourne le nom et le prénom du client selon son id
+     * @param idClient
+     * @return 
+     */
     public String nomClient(String idClient){
         String sql = "select nomClient,prenomClient from client where idClient = " + idClient;
         ResultSet recup = ConnexionBDD.getInstance().requeteSelection(sql);
@@ -462,11 +491,17 @@ public class DoubleListes extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_jButtonModifierList1MouseClicked
-
+    /**
+     * Action : quand une catégorie est sélectionnée (dans la liste catégorie) alors seuls les produits étant de cette catégorie seront afficher dans liste produit
+     * @param evt 
+     */
     private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
         list2parList1();
     }//GEN-LAST:event_jList1MouseClicked
-
+    /**
+     * Bouton pour modifier les informations de la sélection dans la liste 2 (produit ou personnel)
+     * @param evt 
+     */
     private void jButtonModifierList2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonModifierList2MouseClicked
         if (jList2.getSelectedValue() != null) {
             if (getFenetre() == 1) {        //Listes Categorie et Produit
@@ -482,7 +517,10 @@ public class DoubleListes extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_jButtonModifierList2MouseClicked
-
+    /**
+     * Bouton qui supprimer le produit/personnel selectionné dans la liste 2
+     * @param evt 
+     */
     private void jButtonSupprimerList2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSupprimerList2MouseClicked
         if (jList2.getSelectedValue() != null) {
 
@@ -499,7 +537,10 @@ public class DoubleListes extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_jButtonSupprimerList2MouseClicked
-
+    /**
+     * Bouton pour afficher les informations du produit/personnel sélectionné dans la liste 2
+     * @param evt 
+     */
     private void jButtonAfficherList2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAfficherList2MouseClicked
         if (jList2.getSelectedValue() != null) {
             if (getFenetre() == 1) {        //Listes Categorie et Produit

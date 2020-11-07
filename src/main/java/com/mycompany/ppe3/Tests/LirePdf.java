@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.ppe3;
+package com.mycompany.ppe3.Tests;
 
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.parser.PdfTextExtractor;
+import com.mycompany.ppe3.ConnexionBDD;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;

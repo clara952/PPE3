@@ -5,6 +5,7 @@
  */
 package com.mycompany.ppe3;
 
+import com.mycompany.ppe3.Tests.BDD;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -61,7 +62,10 @@ public class Identification extends javax.swing.JFrame {
         }
         return result;
     }
-    
+    /**
+     * Méthode pour retourner l'idProfil à partir des informations saisies
+     * @return 
+     */
     public String recupererProfil(){
         String pseudo = jTextFieldPseudo.getText();
         String mdp = jPasswordFieldMdp.getText();

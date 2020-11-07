@@ -5,6 +5,7 @@
  */
 package com.mycompany.ppe3;
 
+import com.mycompany.ppe3.Tests.BDD;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Image;
@@ -37,19 +38,31 @@ public class FenetreProduit extends javax.swing.JFrame {
     public FenetreProduit() {
         initComponents();
     }
-
+    /**
+     * Méthode qui retourne le numéro fenêtre choisie
+     * @return 
+     */
     public static Integer getFenetre() {
         return fenetre;
     }
-
+    /**
+     * Méthode qui récupère le numéro fenêtre choisie
+     * @param fenetre 
+     */
     public static void setFenetre(Integer fenetre) {
         FenetreProduit.fenetre = fenetre;
     }
-
+    /**
+     * Méthode qui retourn l'idProduit
+     * @return 
+     */
     public static Integer getIdProduit() {
         return idProduit;
     }
-
+    /**
+     * Méthode qui récupère l'idProduit
+     * @param idProduit 
+     */
     public static void setIdProduit(Integer idProduit) {
         FenetreProduit.idProduit = idProduit;
     }
@@ -84,7 +97,10 @@ public class FenetreProduit extends javax.swing.JFrame {
             Logger.getLogger(BDD.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+    /**
+     * Méthode qui ajoute un produit à la BDD
+     * @return 
+     */
     public String ajouterProduit(){
         String erreur = "rien";
         //Vérifier que le client en question n'existe pas déjà
@@ -106,13 +122,17 @@ public class FenetreProduit extends javax.swing.JFrame {
         }
         return erreur;
     }
-    
+    /**
+     * Méthode qui modifie les information du produit sélectionné
+     */
     public void modificationProduit(){
         
         String sql = "update produit set libelleProduit = '" + jTextFieldNomProduit.getText()+ "', prix = '" + jTextFieldPrixProduit.getText() + "', stock = '" + jTextFieldStockProduit.getText() + "', image = '" + jTextFieldLienImage + "', popularite = '" + jTextFieldAvisProduit.getText() + "', idCategorie = '" + BoxIdCategorie() + "' where idProduit = " + getIdProduit();
         ConnexionBDD.getInstance().requeteAction(sql);
     }
-    
+    /**
+     * Méthode qui complète la combo box avec les catégories existantes
+     */
     public void comboBoxCategorie(){
         String tuple;
         DefaultComboBoxModel leModel = (DefaultComboBoxModel)jComboBoxCategorie.getModel();
@@ -127,7 +147,10 @@ public class FenetreProduit extends javax.swing.JFrame {
             Logger.getLogger(BDD.class.getName()).log(Level.SEVERE, null, ex);
         }      
     }
-    
+    /**
+     * Méthode qui retourn l'idCatégorie de la catégorie sélectionnée
+     * @return 
+     */
     public String BoxIdCategorie(){
         String idCategorie = null;
         String categorie = jComboBoxCategorie.getSelectedItem().toString();
@@ -142,6 +165,11 @@ public class FenetreProduit extends javax.swing.JFrame {
         
         return idCategorie;
     }
+    /**
+     * Méthode qui retourne le libelleCategorie selon l'idCategorie donné
+     * @param idCategorie
+     * @return 
+     */
     public String BoxLibelleCategorie(String idCategorie){
         String libelleCategorie = null;
         String sql = "select libelleCategorie from categorie where idCategorie = '" + idCategorie + "'";
@@ -370,11 +398,17 @@ public class FenetreProduit extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         
     }//GEN-LAST:event_formWindowActivated
-
+    /**
+     * Bouton pour femer la fenêtre
+     * @param evt 
+     */
     private void jButtonAnullerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAnullerMouseClicked
         this.dispose();
     }//GEN-LAST:event_jButtonAnullerMouseClicked
-
+    /**
+     * Actions à faire quand la fenêtre est ouverte
+     * @param evt 
+     */
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         if (fenetre == 1) {         //Fênetre d'affichage des informations du client
             jLabelTitre.setText("Produit");
@@ -409,7 +443,10 @@ public class FenetreProduit extends javax.swing.JFrame {
             comboBoxCategorie();
         }
     }//GEN-LAST:event_formWindowOpened
-
+    /**
+     * Bouton pour confirmer l'ajout/modification et fermer la fenêtre
+     * @param evt 
+     */
     private void jButtonConfirmerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConfirmerMouseClicked
         if (fenetre == 2) {     //Fenetre de modification du client
             modificationProduit();

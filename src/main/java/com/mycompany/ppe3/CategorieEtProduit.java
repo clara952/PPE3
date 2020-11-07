@@ -5,6 +5,7 @@
  */
 package com.mycompany.ppe3;
 
+import com.mycompany.ppe3.Tests.BDD;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -90,9 +91,17 @@ public class CategorieEtProduit extends javax.swing.JPanel {
             }        
         }
     }
+    /**
+     * Méthode qui retourn la catégorie sélectionnée dans la liste
+     * @return 
+     */
     public String getCategorieSelectionnee(){
         return jListCategorie.getSelectedValue();
     }
+    /**
+     * Méthode qui retourne le produit sélectionné dans la liste
+     * @return 
+     */
     public String getProduitSelectionne(){
         return jListProduit.getSelectedValue();
     }
@@ -132,7 +141,10 @@ public class CategorieEtProduit extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 6, 150, 210));
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Action : quand une catégorie est sélectionnée (dans la liste catégorie) alors seuls les produits étant de cette catégorie seront afficher dans liste produit
+     * @param evt 
+     */
     private void jListCategorieMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListCategorieMouseClicked
         listProduitParCategorie();
     }//GEN-LAST:event_jListCategorieMouseClicked
