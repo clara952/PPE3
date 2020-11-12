@@ -2,6 +2,8 @@
 *Développement d’un logiciel écrit en JAVA*
 
 ## Visuel
+![](https://github.com/clara952/PPE3/blob/master/images_PPE3/PPE3_1.PNG)
+![](https://github.com/clara952/PPE3/blob/master/images_PPE3/PPE3_2.PNG)
 
 ## Installation
 Ajouter .jar pour l'installation
