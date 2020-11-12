@@ -98,7 +98,7 @@
               <Color blue="33" green="33" red="33" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="F:\SIO2\Programmation\PPE3\src\main\java\images\oeil.png"/>
+              <Image iconType="2" name="C:\Users\KRONOTEK\Documents\NetBeansProjects\PPE3\src\main\java\images\oeil.png"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
@@ -117,7 +117,7 @@
               <Color blue="33" green="33" red="33" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="F:\SIO2\Programmation\PPE3\src\main\java\images\plus.png"/>
+              <Image iconType="2" name="C:\Users\KRONOTEK\Documents\NetBeansProjects\PPE3\src\main\java\images\plus.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -138,7 +138,7 @@
               <Color blue="33" green="33" red="33" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="F:\SIO2\Programmation\PPE3\src\main\java\images\modifier.jpg"/>
+              <Image iconType="2" name="C:\Users\KRONOTEK\Documents\NetBeansProjects\PPE3\src\main\java\images\modifier.jpg"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
@@ -157,7 +157,7 @@
               <Color blue="33" green="33" red="33" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="F:\SIO2\Programmation\PPE3\src\main\java\images\plus.png"/>
+              <Image iconType="2" name="C:\Users\KRONOTEK\Documents\NetBeansProjects\PPE3\src\main\java\images\plus.png"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
@@ -179,7 +179,7 @@
               <Color blue="33" green="33" red="33" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="F:\SIO2\Programmation\PPE3\src\main\java\images\modifier.jpg"/>
+              <Image iconType="2" name="C:\Users\KRONOTEK\Documents\NetBeansProjects\PPE3\src\main\java\images\modifier.jpg"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
@@ -198,7 +198,7 @@
               <Color blue="33" green="33" red="33" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="F:\SIO2\Programmation\PPE3\src\main\java\images\supprimer.png"/>
+              <Image iconType="2" name="C:\Users\KRONOTEK\Documents\NetBeansProjects\PPE3\src\main\java\images\supprimer.png"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
@@ -214,7 +214,7 @@
               <Color blue="33" green="33" red="33" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="F:\SIO2\Programmation\PPE3\src\main\java\images\supprimer.png"/>
+              <Image iconType="2" name="C:\Users\KRONOTEK\Documents\NetBeansProjects\PPE3\src\main\java\images\supprimer.png"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>

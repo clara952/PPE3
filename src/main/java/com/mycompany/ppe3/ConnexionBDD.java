@@ -22,10 +22,10 @@ public class ConnexionBDD {
      * Membres static (de classe)
      *
      */
-//    private static String nomServeur = "localhost";
-    private static String nomServeur = "10.0.10.196";
-//    private static String port = "3308";
-    private static String port = "8083";
+    private static String nomServeur = "localhost";
+//    private static String nomServeur = "10.0.10.196";
+    private static String port = "3308";
+//    private static String port = "8083";
     private static String nomBdd = "tablette";
     private static String nomUtilisateur = "root";
     private static String motDePasse = "";

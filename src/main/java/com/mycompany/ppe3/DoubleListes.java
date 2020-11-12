@@ -288,7 +288,7 @@ public class DoubleListes extends javax.swing.JPanel {
 
         jButtonAfficherList2.setBackground(new java.awt.Color(255, 255, 255));
         jButtonAfficherList2.setForeground(new java.awt.Color(51, 51, 51));
-        jButtonAfficherList2.setIcon(new javax.swing.ImageIcon("F:\\SIO2\\Programmation\\PPE3\\src\\main\\java\\images\\oeil.png")); // NOI18N
+        jButtonAfficherList2.setIcon(new javax.swing.ImageIcon("C:\\Users\\KRONOTEK\\Documents\\NetBeansProjects\\PPE3\\src\\main\\java\\images\\oeil.png")); // NOI18N
         jButtonAfficherList2.setBorder(null);
         jButtonAfficherList2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -298,7 +298,7 @@ public class DoubleListes extends javax.swing.JPanel {
 
         jButtonAjouterList2.setBackground(new java.awt.Color(255, 255, 255));
         jButtonAjouterList2.setForeground(new java.awt.Color(51, 51, 51));
-        jButtonAjouterList2.setIcon(new javax.swing.ImageIcon("F:\\SIO2\\Programmation\\PPE3\\src\\main\\java\\images\\plus.png")); // NOI18N
+        jButtonAjouterList2.setIcon(new javax.swing.ImageIcon("C:\\Users\\KRONOTEK\\Documents\\NetBeansProjects\\PPE3\\src\\main\\java\\images\\plus.png")); // NOI18N
         jButtonAjouterList2.setToolTipText("");
         jButtonAjouterList2.setBorder(null);
         jButtonAjouterList2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -314,7 +314,7 @@ public class DoubleListes extends javax.swing.JPanel {
 
         jButtonModifierList2.setBackground(new java.awt.Color(255, 255, 255));
         jButtonModifierList2.setForeground(new java.awt.Color(51, 51, 51));
-        jButtonModifierList2.setIcon(new javax.swing.ImageIcon("F:\\SIO2\\Programmation\\PPE3\\src\\main\\java\\images\\modifier.jpg")); // NOI18N
+        jButtonModifierList2.setIcon(new javax.swing.ImageIcon("C:\\Users\\KRONOTEK\\Documents\\NetBeansProjects\\PPE3\\src\\main\\java\\images\\modifier.jpg")); // NOI18N
         jButtonModifierList2.setBorder(null);
         jButtonModifierList2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -324,7 +324,7 @@ public class DoubleListes extends javax.swing.JPanel {
 
         jButtonAjouterList1.setBackground(new java.awt.Color(255, 255, 255));
         jButtonAjouterList1.setForeground(new java.awt.Color(51, 51, 51));
-        jButtonAjouterList1.setIcon(new javax.swing.ImageIcon("F:\\SIO2\\Programmation\\PPE3\\src\\main\\java\\images\\plus.png")); // NOI18N
+        jButtonAjouterList1.setIcon(new javax.swing.ImageIcon("C:\\Users\\KRONOTEK\\Documents\\NetBeansProjects\\PPE3\\src\\main\\java\\images\\plus.png")); // NOI18N
         jButtonAjouterList1.setBorder(null);
         jButtonAjouterList1.setMaximumSize(new java.awt.Dimension(239, 227));
         jButtonAjouterList1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -335,7 +335,7 @@ public class DoubleListes extends javax.swing.JPanel {
 
         jButtonModifierList1.setBackground(new java.awt.Color(255, 255, 255));
         jButtonModifierList1.setForeground(new java.awt.Color(51, 51, 51));
-        jButtonModifierList1.setIcon(new javax.swing.ImageIcon("F:\\SIO2\\Programmation\\PPE3\\src\\main\\java\\images\\modifier.jpg")); // NOI18N
+        jButtonModifierList1.setIcon(new javax.swing.ImageIcon("C:\\Users\\KRONOTEK\\Documents\\NetBeansProjects\\PPE3\\src\\main\\java\\images\\modifier.jpg")); // NOI18N
         jButtonModifierList1.setBorder(null);
         jButtonModifierList1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -345,12 +345,12 @@ public class DoubleListes extends javax.swing.JPanel {
 
         jButtonSupprimerList1.setBackground(new java.awt.Color(255, 255, 255));
         jButtonSupprimerList1.setForeground(new java.awt.Color(51, 51, 51));
-        jButtonSupprimerList1.setIcon(new javax.swing.ImageIcon("F:\\SIO2\\Programmation\\PPE3\\src\\main\\java\\images\\supprimer.png")); // NOI18N
+        jButtonSupprimerList1.setIcon(new javax.swing.ImageIcon("C:\\Users\\KRONOTEK\\Documents\\NetBeansProjects\\PPE3\\src\\main\\java\\images\\supprimer.png")); // NOI18N
         jButtonSupprimerList1.setBorder(null);
 
         jButtonSupprimerList2.setBackground(new java.awt.Color(255, 255, 255));
         jButtonSupprimerList2.setForeground(new java.awt.Color(51, 51, 51));
-        jButtonSupprimerList2.setIcon(new javax.swing.ImageIcon("F:\\SIO2\\Programmation\\PPE3\\src\\main\\java\\images\\supprimer.png")); // NOI18N
+        jButtonSupprimerList2.setIcon(new javax.swing.ImageIcon("C:\\Users\\KRONOTEK\\Documents\\NetBeansProjects\\PPE3\\src\\main\\java\\images\\supprimer.png")); // NOI18N
         jButtonSupprimerList2.setBorder(null);
         jButtonSupprimerList2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
