@@ -4,6 +4,7 @@
 ## Visuel
 
 ## Installation
+Ajouter .jar pour l'installation
 
 ## Usage
 Application de type "client lourd" pour les employés d'une entreprise de vente. Permet aux agents de l'entreprise d'accéder à toutes les informations indispensables pour une vente chez un client, à partir de son ordinateur avec l'application.
