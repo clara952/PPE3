@@ -25,7 +25,7 @@ Dans votre base de donnée vous devrez créer une base de données, ici appelée
 
 # Manuel d'utilisation
 
-[](https://docs.google.com/document/d/1fQPri8qwvkwAs7LTUer4oeqf-xMoe0WIM1jeE22sogk/edit?usp=sharing)
+[Lien vers le manuel d'utilisation de l'application](https://docs.google.com/document/d/1fQPri8qwvkwAs7LTUer4oeqf-xMoe0WIM1jeE22sogk/edit?usp=sharing)
 
 ## Etat du projet
 
