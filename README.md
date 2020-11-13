@@ -23,6 +23,69 @@ Pour le moment, pour accéder à l'application il faut le faire à partir de Net
 
 Dans votre base de donnée vous devrez créer une base de données, ici appelée **tablette**, et une fois fait vous pourrez, dans cette base de données copiez le **script sql** qui se trouve dans le Wiki. Avec ceci vous aurez une base de données avec toutes les tables dont vous aurez besoin pour l'application. Pour le tester vous pouvez aussi inseré des tuples dans les tables avec le fichier **SQL BDD entrer données pour test** dans le Wiki.
 
+# Manuel d'utilisation
+
+## Connexion
+Au lancement de l'application, la première fenêtre qui apparaît est celle de connexion. Vous devrez le compléter pour afficher la prochaine fenêtre avec un pseudo et un mot de passe déjà inscrit dans la base de donnée.
+![](https://github.com/clara952/PPE3/blob/master/images_PPE3/PPE3_1.PNG)
+Pour ajouter de nouveaux utilisateurs, il faudra le faire à partir d'un compte **administrateur**.
+
+
+## Produits
+Une fois connecté, en tant qu'**agent** ou **administrateur** on arrive sur la page *produit*
+La différence entre les deux profils se trouve au niveau de la barre de navigation de gauche, les **agents** ne verront que les trois premiers boutons : *Produits*, *Clients*, *Vente*. Les **administrateurs** auront en plus les pages *Agents* et *Statistiques*.
+
+![](https://github.com/clara952/PPE3/blob/master/images_PPE3/PPE3_2.PNG)
+
+Pour ce qui est de la gestion des produits : Les **agents** ne pourront seulement qu'afficher les produits selon leur catégorie et afficher leur informations.
+
+![](https://github.com/clara952/PPE3/blob/master/images_PPE3/PPE3_8.PNG)
+
+Pour les **administrateurs**, ils peuvent en plus ajouter des catégories.
+
+![](https://github.com/clara952/PPE3/blob/master/images_PPE3/PPE3_3.PNG)
+
+Modifier une catégorie sélectionnée.
+
+![](https://github.com/clara952/PPE3/blob/master/images_PPE3/PPE3_4.PNG)
+
+Ajouter un produit.
+
+![](https://github.com/clara952/PPE3/blob/master/images_PPE3/PPE3_5.PNG)
+
+Modifier un produit.
+
+![](https://github.com/clara952/PPE3/blob/master/images_PPE3/PPE3_6.PNG)
+
+Supprimer le produit sélectionné avec une fenêtre de confirmation.
+
+![](https://github.com/clara952/PPE3/blob/master/images_PPE3/PPE3_7.PNG)
+
+Ou simplement afficher ses informations.
+
+## Clients
+La page client ne diffère pas énormément entre les deux profils, l'**administrateur** à seulement en plus la possibilité de supprimer un client (l'**agent** ne peut pas le faire).
+
+![](https://github.com/clara952/PPE3/blob/master/images_PPE3/PPE3_15.PNG)
+
+Sinon, de même que le produit, on peut ajouter un client en entrant ses informations.
+
+![](https://github.com/clara952/PPE3/blob/master/images_PPE3/PPE3_16.PNG)
+
+Le modifier ou simplement afficher ses informations.
+
+## Vente
+Pour les **agents**, seule une vente sera possible, il ne pourra pas afficher les autres ventes effectuées.
+
+![](https://github.com/clara952/PPE3/blob/master/images_PPE3/PPE3_9.PNG)
+
+Ainsi, il peut choisir le client, et voir avec lui les différents produits souhaité, ainsi que leurs quantités.
+
+![](https://github.com/clara952/PPE3/blob/master/images_PPE3/PPE3_10.PNG)
+
+Le prix total du panier est affiché en bas de celui-ci et une fois la commande terminé il suffit de confirmer pour enregistrer la vente dans la base de données. Une facture sera écrité automatiquement et intégré elle aussi à la base de données.
+
+
 ## Etat du projet
 
 #### Connexion 
