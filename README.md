@@ -48,8 +48,8 @@ Possible pour les personnes déjà inscrite dans la base de données, soit agent
 #### Documentation
 * Script SQL
 * MCD BDD
-* Document installation (à faire)
-* Document utilisation (à faire)
+* Document installation
+* Document utilisation 
 * Diagramme de classe (à faire)
 * Javadoc (à faire)
 			
