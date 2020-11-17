@@ -42,7 +42,6 @@ Possible pour les personnes déjà inscrite dans la base de données, soit agent
 * Gestion des produits et catégorie (suppression des catégories non codée)
 * Gestion des ventes (en cours et problème pour les factures)
 * Gestion des clients
-* Affichage des statistiques (affichage du chiffre d'affaire annuel non codé)
 * Statistiques (chiffre d'affaire annuel non codé)
 
 #### Documentation
