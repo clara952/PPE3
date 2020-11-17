@@ -80,6 +80,7 @@ public class Agent extends javax.swing.JFrame {
                     prenom = lesTuples.getString(3);
                     leModel.addElement(nom + " " + prenom);
                 }
+
             } catch (SQLException ex) {
                 Logger.getLogger(Agent.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -922,11 +923,13 @@ public class Agent extends javax.swing.JFrame {
         Integer idPersonnel = getIdAgent();
         String idVente = null;
         
-        String sql = "insert into vente values (null, DATE(NOW())," + idClient + "," + idPersonnel + ")";
+        String sql = "insert into vente values (NULL, DATE(NOW())," + idClient + "," + idPersonnel + ")";
         ConnexionBDD.getInstance().requeteAction(sql);
+        System.out.println(sql);
         //Récupérer idVente créer pour créer la suite
         String sql2 = "select idVente from vente where dateVente = DATE(NOW()) and idClient = " + idClient + " and idPersonnel = " + idPersonnel;
         ResultSet recupIdVente = ConnexionBDD.getInstance().requeteSelection(sql2);
+        System.out.println(sql2);
         try {
             recupIdVente.next();
             idVente = recupIdVente.getString(1);
@@ -937,6 +940,7 @@ public class Agent extends javax.swing.JFrame {
         if (idVente != null) {
             String sql3 = "insert into bon_commande values (null,null, '" + idVente + "')";
             ConnexionBDD.getInstance().requeteAction(sql3);     
+            System.out.println(sql3);
             
             ecrireFacturePdf(idVente, nomAgent(), jComboBoxClient.getSelectedItem().toString(), jLabelPrixPanier.getText());
         }
@@ -946,6 +950,7 @@ public class Agent extends javax.swing.JFrame {
             String produit = (String) jTable1.getModel().getValueAt(i, 0);
             String sql4 = "select idProduit from produit where libelleProduit = '" + produit + "'";
             ResultSet recupProduit = ConnexionBDD.getInstance().requeteSelection(sql4);
+            System.out.println(sql4);
             try {
                 recupProduit.next();
                 produit = recupProduit.getString(1);
@@ -958,6 +963,8 @@ public class Agent extends javax.swing.JFrame {
             
             String sql5 = "insert into comprendre values ('" + produit + "','" + idVente + "','" + quantite + "')";
             ConnexionBDD.getInstance().requeteAction(sql5);
+            System.out.println(sql5);
+            
         }
     }//GEN-LAST:event_jButton1MouseClicked
 
