@@ -107,7 +107,6 @@ public class Identification extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(51, 51, 51));
 
-        jPasswordFieldMdp.setBackground(new java.awt.Color(255, 255, 255));
         jPasswordFieldMdp.setForeground(new java.awt.Color(51, 51, 51));
         jPasswordFieldMdp.setText("456789");
         jPasswordFieldMdp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
@@ -118,9 +117,8 @@ public class Identification extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("Mot de passe :");
 
-        jTextFieldPseudo.setBackground(new java.awt.Color(255, 255, 255));
         jTextFieldPseudo.setForeground(new java.awt.Color(51, 51, 51));
-        jTextFieldPseudo.setText("marionbigeard");
+        jTextFieldPseudo.setText("marion.bigeard");
         jTextFieldPseudo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         jTextFieldPseudo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
