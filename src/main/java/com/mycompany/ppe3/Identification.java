@@ -38,7 +38,7 @@ public class Identification extends javax.swing.JFrame {
             String sql = "SELECT COUNT(*) FROM personnel WHERE pseudo = '" + pseudo + "' AND mdp = '" + mdp + "'";   //Compte le nombre de personnel avec ce pseudo
             ResultSet nbTuples = ConnexionBDD.getInstance().requeteSelection(sql); 
             nbTuples.next();
-            System.out.println(nbTuples.getInt("COUNT(*)"));
+//            System.out.println(nbTuples.getInt("COUNT(*)"));
             switch (nbTuples.getInt("COUNT(*)")) {
                 case 1:
                     result = "OK";

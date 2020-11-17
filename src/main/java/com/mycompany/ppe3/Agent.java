@@ -288,6 +288,7 @@ public class Agent extends javax.swing.JFrame {
         jPanelStatistiques = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jListStock = new javax.swing.JList<>();
+        jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jButtonProduits = new javax.swing.JButton();
         jButtonClients = new javax.swing.JButton();
@@ -376,7 +377,7 @@ public class Agent extends javax.swing.JFrame {
 
         jButtonAfficherClient.setBackground(new java.awt.Color(255, 255, 255));
         jButtonAfficherClient.setForeground(new java.awt.Color(51, 51, 51));
-        jButtonAfficherClient.setIcon(new javax.swing.ImageIcon("F:\\SIO2\\Programmation\\PPE3\\src\\main\\java\\images\\oeil.png")); // NOI18N
+        jButtonAfficherClient.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/oeil.png"))); // NOI18N
         jButtonAfficherClient.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         jButtonAfficherClient.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -386,7 +387,7 @@ public class Agent extends javax.swing.JFrame {
 
         jButtonModifierClient.setBackground(new java.awt.Color(255, 255, 255));
         jButtonModifierClient.setForeground(new java.awt.Color(51, 51, 51));
-        jButtonModifierClient.setIcon(new javax.swing.ImageIcon("F:\\SIO2\\Programmation\\PPE3\\src\\main\\java\\images\\modifier.jpg")); // NOI18N
+        jButtonModifierClient.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/modifier.jpg"))); // NOI18N
         jButtonModifierClient.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         jButtonModifierClient.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -396,7 +397,7 @@ public class Agent extends javax.swing.JFrame {
 
         jButtonCréerClient.setBackground(new java.awt.Color(255, 255, 255));
         jButtonCréerClient.setForeground(new java.awt.Color(51, 51, 51));
-        jButtonCréerClient.setIcon(new javax.swing.ImageIcon("F:\\SIO2\\Programmation\\PPE3\\src\\main\\java\\images\\plus.png")); // NOI18N
+        jButtonCréerClient.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/plus.png"))); // NOI18N
         jButtonCréerClient.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         jButtonCréerClient.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -406,7 +407,7 @@ public class Agent extends javax.swing.JFrame {
 
         jButtonSupprimerClient.setBackground(new java.awt.Color(255, 255, 255));
         jButtonSupprimerClient.setForeground(new java.awt.Color(51, 51, 51));
-        jButtonSupprimerClient.setIcon(new javax.swing.ImageIcon("F:\\SIO2\\Programmation\\PPE3\\src\\main\\java\\images\\supprimer.png")); // NOI18N
+        jButtonSupprimerClient.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/supprimer.png"))); // NOI18N
         jButtonSupprimerClient.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         jButtonSupprimerClient.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -435,12 +436,13 @@ public class Agent extends javax.swing.JFrame {
         jPanelClientLayout.setVerticalGroup(
             jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelClientLayout.createSequentialGroup()
-                .addContainerGap(65, Short.MAX_VALUE)
-                .addGroup(jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonCréerClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonAfficherClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonSupprimerClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonModifierClient))
+                .addContainerGap(66, Short.MAX_VALUE)
+                .addGroup(jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelClientLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jButtonCréerClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonSupprimerClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonAfficherClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonModifierClient, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -620,7 +622,11 @@ public class Agent extends javax.swing.JFrame {
         jListStock.setModel(new DefaultListModel());
         jScrollPane1.setViewportView(jListStock);
 
-        jPanelStatistiques.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 610, 100));
+        jPanelStatistiques.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 610, 100));
+
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Produits (bientôt) en rupture de stock");
+        jPanelStatistiques.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         jTabbedPaneAgent.addTab("Produit", jPanelStatistiques);
 
@@ -1011,6 +1017,7 @@ public class Agent extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxClient;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelPrixPanier;
     private javax.swing.JLabel jLabelTitre;
     private javax.swing.JList<String> jListClient;

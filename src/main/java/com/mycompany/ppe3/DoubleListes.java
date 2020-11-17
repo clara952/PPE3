@@ -187,7 +187,7 @@ public class DoubleListes extends javax.swing.JPanel {
         leModel.clear();
         try {
             String sql = "select * from " + getNomList2();
-            System.out.println(sql);
+//            System.out.println(sql);
             ResultSet lesTuples = ConnexionBDD.getInstance().requeteSelection(sql);
             while (lesTuples.next()) {
                 tuple = lesTuples.getString(2);
@@ -336,6 +336,7 @@ public class DoubleListes extends javax.swing.JPanel {
 
         jButtonAfficherList2.setBackground(new java.awt.Color(255, 255, 255));
         jButtonAfficherList2.setForeground(new java.awt.Color(51, 51, 51));
+        jButtonAfficherList2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/oeil.png"))); // NOI18N
         jButtonAfficherList2.setBorder(null);
         jButtonAfficherList2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -345,6 +346,7 @@ public class DoubleListes extends javax.swing.JPanel {
 
         jButtonAjouterList2.setBackground(new java.awt.Color(255, 255, 255));
         jButtonAjouterList2.setForeground(new java.awt.Color(51, 51, 51));
+        jButtonAjouterList2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/plus.png"))); // NOI18N
         jButtonAjouterList2.setToolTipText("");
         jButtonAjouterList2.setBorder(null);
         jButtonAjouterList2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -360,6 +362,7 @@ public class DoubleListes extends javax.swing.JPanel {
 
         jButtonModifierList2.setBackground(new java.awt.Color(255, 255, 255));
         jButtonModifierList2.setForeground(new java.awt.Color(51, 51, 51));
+        jButtonModifierList2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/modifier.jpg"))); // NOI18N
         jButtonModifierList2.setBorder(null);
         jButtonModifierList2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -380,7 +383,7 @@ public class DoubleListes extends javax.swing.JPanel {
 
         jButtonModifierList1.setBackground(new java.awt.Color(255, 255, 255));
         jButtonModifierList1.setForeground(new java.awt.Color(51, 51, 51));
-        jButtonModifierList1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/supprimer.png"))); // NOI18N
+        jButtonModifierList1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/modifier.jpg"))); // NOI18N
         jButtonModifierList1.setBorder(null);
         jButtonModifierList1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -390,10 +393,12 @@ public class DoubleListes extends javax.swing.JPanel {
 
         jButtonSupprimerList1.setBackground(new java.awt.Color(255, 255, 255));
         jButtonSupprimerList1.setForeground(new java.awt.Color(51, 51, 51));
+        jButtonSupprimerList1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/supprimer.png"))); // NOI18N
         jButtonSupprimerList1.setBorder(null);
 
         jButtonSupprimerList2.setBackground(new java.awt.Color(255, 255, 255));
         jButtonSupprimerList2.setForeground(new java.awt.Color(51, 51, 51));
+        jButtonSupprimerList2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/supprimer.png"))); // NOI18N
         jButtonSupprimerList2.setBorder(null);
         jButtonSupprimerList2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
