@@ -6,11 +6,14 @@
 package com.mycompany.ppe3;
 
 import com.mycompany.ppe3.Tests.BDD;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 
 /**
  *
@@ -103,6 +106,11 @@ public class Identification extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Identification");
         setBackground(new java.awt.Color(255, 255, 255));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(51, 51, 51));
@@ -110,6 +118,11 @@ public class Identification extends javax.swing.JFrame {
         jPasswordFieldMdp.setForeground(new java.awt.Color(51, 51, 51));
         jPasswordFieldMdp.setText("456789");
         jPasswordFieldMdp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        jPasswordFieldMdp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jPasswordFieldMdpKeyPressed(evt);
+            }
+        });
 
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("Pseudo :");
@@ -229,6 +242,24 @@ public class Identification extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldPseudoActionPerformed
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowOpened
+
+    private void jPasswordFieldMdpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldMdpKeyPressed
+        int a=evt.getKeyCode();
+        if (a== KeyEvent.VK_ENTER){
+            jLabelErreur.setText(Confirmation());
+            //Vérifier que la confirmation de pseudo et mot de passe est bonne
+            if ("OK".equals(Confirmation())) {
+                Agent pageAgent = new Agent();
+                pageAgent.show();
+                //Fermer la fenêtre Identification
+                this.dispose();            
+            } 
+        }
+    }//GEN-LAST:event_jPasswordFieldMdpKeyPressed
+    
     /**
      * @param args the command line arguments
      */
@@ -262,6 +293,8 @@ public class Identification extends javax.swing.JFrame {
                 new Identification().setVisible(true);
             }
         });
+        
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

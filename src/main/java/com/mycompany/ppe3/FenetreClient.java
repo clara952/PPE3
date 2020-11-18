@@ -81,7 +81,7 @@ public class FenetreClient extends javax.swing.JFrame {
         //Vérifier que le client en question n'existe pas déjà
         String verification = "select count(*) from client where nomClient = '" + jTextFieldNom.getText()+ "' and prenomClient = '" + jTextFieldPrenom.getText() + "' and emailClient = '" + jTextFieldEmail.getText() + "' and telClient = '" + jTextFieldTel.getText() + "'";
         ResultSet lesTuples = ConnexionBDD.getInstance().requeteSelection(verification);
-        System.out.println(verification);
+//        System.out.println(verification);
         try {
             lesTuples.next();
             switch (lesTuples.getInt("count(*)")) {
@@ -323,11 +323,15 @@ public class FenetreClient extends javax.swing.JFrame {
         }else{                  //Fenetre d'ajout de client
             if (ajouterClient() == "rien") {
                 ajouterClient();
+                
+                
                 this.dispose(); 
             }else{
                 jLabelErreur.setText(ajouterClient());
             }
         }
+        Agent agent = new Agent();
+        agent.listClient();
     }//GEN-LAST:event_jButtonConfirmerMouseClicked
 
     /**

@@ -19,6 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
@@ -195,6 +196,28 @@ public class Agent extends javax.swing.JFrame {
         return idClient;
     }
     /**
+     * Méthode pour faire une liste de nombre entre 1 et le nombre de produit en stock donné
+     * @param produit
+     * @return
+     * @throws SQLException 
+     */
+    public String[] optionsQuantite(String produit) throws SQLException{
+        Integer stock;
+        
+        String sql = "select stock from produit where libelleProduit = '" + produit + "'";
+        ResultSet tuple = ConnexionBDD.getInstance().requeteSelection(sql);
+        tuple.next();
+        stock = tuple.getInt(1);
+        String[] options = new String[stock+1];
+        
+        for (int i = 0 ; i < stock; i++) {
+            options[i] = String.valueOf(i+1);
+        }
+        
+        return options;
+    }
+    
+    /**
      * Méthode pour écrire une facture
      * @param idFacture
      * @param nomAgent
@@ -282,6 +305,8 @@ public class Agent extends javax.swing.JFrame {
         jComboBoxClient = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         jLabelPrixPanier = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jPanelAdministrateur = new javax.swing.JPanel();
         doubleListesVente = new com.mycompany.ppe3.DoubleListes();
         jPanelAgents = new javax.swing.JPanel();
@@ -296,6 +321,7 @@ public class Agent extends javax.swing.JFrame {
         jButtonVente = new javax.swing.JButton();
         jButtonAgents = new javax.swing.JButton();
         jButtonStatistiques = new javax.swing.JButton();
+        jButtonDeconnexion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gestionnaire pour agent");
@@ -349,6 +375,12 @@ public class Agent extends javax.swing.JFrame {
 
         jPanelProduit.setBackground(new java.awt.Color(255, 255, 255));
         jPanelProduit.setEnabled(false);
+
+        doubleListesProduit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                doubleListesProduitMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelProduitLayout = new javax.swing.GroupLayout(jPanelProduit);
         jPanelProduit.setLayout(jPanelProduitLayout);
@@ -501,19 +533,28 @@ public class Agent extends javax.swing.JFrame {
 
         jLabelPrixPanier.setText("0.0");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Produits");
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Panier");
+
         javax.swing.GroupLayout jPanelPersonnelLayout = new javax.swing.GroupLayout(jPanelPersonnel);
         jPanelPersonnel.setLayout(jPanelPersonnelLayout);
         jPanelPersonnelLayout.setHorizontalGroup(
             jPanelPersonnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelPersonnelLayout.createSequentialGroup()
-                .addGroup(jPanelPersonnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelPersonnelLayout.createSequentialGroup()
-                        .addContainerGap()
+                .addContainerGap()
+                .addGroup(jPanelPersonnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelPersonnelLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBoxClient, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jComboBoxClient, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3)
                     .addComponent(categorieEtProduit1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(jPanelPersonnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPersonnelLayout.createSequentialGroup()
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -524,6 +565,8 @@ public class Agent extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPersonnelLayout.createSequentialGroup()
                         .addComponent(jButtonAjouterPanier)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4)
+                        .addGap(54, 54, 54)
                         .addComponent(jButtonSupprimerPanier))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -535,22 +578,28 @@ public class Agent extends javax.swing.JFrame {
                 .addGroup(jPanelPersonnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jComboBoxClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelPersonnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(categorieEtProduit1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelPersonnelLayout.createSequentialGroup()
+                .addGroup(jPanelPersonnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelPersonnelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelPersonnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonSupprimerPanier)
-                            .addComponent(jButtonAjouterPanier))
+                            .addComponent(jButtonAjouterPanier)
+                            .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelPersonnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelPrixPanier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanelPersonnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton1)
-                        .addComponent(jLabel10)))
-                .addContainerGap())
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanelPersonnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelPrixPanier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanelPersonnelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jButton1)
+                                .addComponent(jLabel10)))
+                        .addContainerGap())
+                    .addGroup(jPanelPersonnelLayout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(categorieEtProduit1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         jTabbedPane1.addTab("Agent", jPanelPersonnel);
@@ -663,7 +712,7 @@ public class Agent extends javax.swing.JFrame {
         });
 
         jButtonAgents.setBackground(new java.awt.Color(102, 102, 102));
-        jButtonAgents.setText("Agents");
+        jButtonAgents.setText("Personnels");
         jButtonAgents.setBorder(null);
         jButtonAgents.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -680,6 +729,15 @@ public class Agent extends javax.swing.JFrame {
             }
         });
 
+        jButtonDeconnexion.setBackground(new java.awt.Color(102, 102, 102));
+        jButtonDeconnexion.setText("Deconnexion");
+        jButtonDeconnexion.setBorder(null);
+        jButtonDeconnexion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonDeconnexionMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -689,6 +747,7 @@ public class Agent extends javax.swing.JFrame {
             .addComponent(jButtonVente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jButtonAgents, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jButtonStatistiques, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+            .addComponent(jButtonDeconnexion, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -703,7 +762,9 @@ public class Agent extends javax.swing.JFrame {
                 .addComponent(jButtonAgents, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonStatistiques, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                .addComponent(jButtonDeconnexion, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 450));
@@ -741,7 +802,8 @@ public class Agent extends javax.swing.JFrame {
 //        doubleListesProduit.list1();
 //        
 //        doubleListesPersonnel.list2();
-//        doubleListesProduit.list2();        
+//        doubleListesProduit.list2();      
+//        listClient();
     }//GEN-LAST:event_formWindowActivated
     /**
      * Bouton pour afficher la fênetre d'affichage des informations du client
@@ -804,7 +866,7 @@ public class Agent extends javax.swing.JFrame {
      */
     private void jButtonAgentsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAgentsMouseClicked
         jTabbedPaneAgent.setSelectedIndex(3);
-        jLabelTitre.setText("Agents");
+        jLabelTitre.setText("Personnels");
         
         doubleListesProduit.setFenetre(2);
     }//GEN-LAST:event_jButtonAgentsMouseClicked
@@ -846,13 +908,13 @@ public class Agent extends javax.swing.JFrame {
         doubleListesPersonnel.list1();
         doubleListesPersonnel.list2();
         
-        doubleListesProduit.setFenetre(1);
-        doubleListesProduit.list1();
-        doubleListesProduit.list2();
-        
         doubleListesVente.setFenetre(3);
         doubleListesVente.list1();
         doubleListesVente.list2();
+        
+        doubleListesProduit.setFenetre(1);
+        doubleListesProduit.list1();
+        doubleListesProduit.list2();
         
         if(getIdAgent() == 2){            
             jButtonSupprimerClient.setVisible(false);
@@ -865,6 +927,7 @@ public class Agent extends javax.swing.JFrame {
             jTabbedPane1.setSelectedIndex(1);
         }        
     }//GEN-LAST:event_formWindowOpened
+    
     /**
      * Bouton pour ajouter le produit selectionné dans la liste, vers le panier du client
      * @param evt 
@@ -880,8 +943,10 @@ public class Agent extends javax.swing.JFrame {
                 ResultSet tuple = ConnexionBDD.getInstance().requeteSelection(sql);
                 tuple.next();
                 String prix = tuple.getString(1);
+                String[] options = optionsQuantite(produit);
+//                String quantite = JOptionPane.showInputDialog(this, "Quelle quantité ?", "1"); 
+                String quantite = (String)JOptionPane.showInputDialog(this,"Quelle quantité ?","",JOptionPane.QUESTION_MESSAGE,null,options ,options[0]);
                 
-                String quantite = JOptionPane.showInputDialog(this, "Quelle quantité ?", "1"); 
                 
                 if (Integer.parseInt(quantite) > 1) {
                     prixTotal = String.valueOf(Integer.parseInt(quantite) * Float.parseFloat(prix));
@@ -965,8 +1030,22 @@ public class Agent extends javax.swing.JFrame {
             ConnexionBDD.getInstance().requeteAction(sql5);
             System.out.println(sql5);
             
+            JOptionPane fenetreConfirmer = new JOptionPane();
+            fenetreConfirmer.showMessageDialog(this, "Votre commande a été enregistrée", "Confirmations", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void doubleListesProduitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_doubleListesProduitMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_doubleListesProduitMouseClicked
+
+    private void jButtonDeconnexionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDeconnexionMouseClicked
+        setIdAgent(null);
+        
+        Identification fenetreIdentification = new Identification();
+        fenetreIdentification.setVisible(true);
+        this.dispose();
+     }//GEN-LAST:event_jButtonDeconnexionMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1015,6 +1094,7 @@ public class Agent extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAjouterPanier;
     private javax.swing.JButton jButtonClients;
     private javax.swing.JButton jButtonCréerClient;
+    private javax.swing.JButton jButtonDeconnexion;
     private javax.swing.JButton jButtonModifierClient;
     private javax.swing.JButton jButtonProduits;
     private javax.swing.JButton jButtonStatistiques;
@@ -1025,6 +1105,8 @@ public class Agent extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelPrixPanier;
     private javax.swing.JLabel jLabelTitre;
     private javax.swing.JList<String> jListClient;

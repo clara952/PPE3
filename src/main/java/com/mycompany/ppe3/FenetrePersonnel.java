@@ -104,9 +104,13 @@ public class FenetrePersonnel extends javax.swing.JFrame {
      * Méthode pour modifier un personnel
      */
     public void modificationPersonnel(){
-        
-        String sql = "update personnel set nomPersonnel = '" + jTextFieldNom.getText()+ "', prenomPersonnel = '" + jTextFieldPrenom.getText() + "', emailPersonnel = '" + jTextFieldEmail.getText() + "', telPersonnel = '" + jTextFieldTel.getText() + "', pseudo = '" + jTextFieldPseudo.getText() + "', mdp = '" + jTextFieldMDP.getText() + "', idProfil = '" + BoxIdProfil() + "' where idPersonnel = " + getIdPersonnel();
-        ConnexionBDD.getInstance().requeteAction(sql);
+        if (getIdPersonnel()==1) {
+            String sql = "update personnel set nomPersonnel = '" + jTextFieldNom.getText()+ "', prenomPersonnel = '" + jTextFieldPrenom.getText() + "', emailPersonnel = '" + jTextFieldEmail.getText() + "', telPersonnel = '" + jTextFieldTel.getText() + "', pseudo = '" + jTextFieldPseudo.getText() + "', mdp = '" + jTextFieldMDP.getText() + "' where idPersonnel = " + getIdPersonnel();
+            ConnexionBDD.getInstance().requeteAction(sql);
+        }else{
+            String sql = "update personnel set nomPersonnel = '" + jTextFieldNom.getText()+ "', prenomPersonnel = '" + jTextFieldPrenom.getText() + "', emailPersonnel = '" + jTextFieldEmail.getText() + "', telPersonnel = '" + jTextFieldTel.getText() + "', pseudo = '" + jTextFieldPseudo.getText() + "', mdp = '" + jTextFieldMDP.getText() + "', idProfil = '" + BoxIdProfil() + "' where idPersonnel = " + getIdPersonnel();
+            ConnexionBDD.getInstance().requeteAction(sql);
+        }
     }
     /**
      * Méthode qui complète la combo box avec les profils existants
@@ -412,7 +416,7 @@ public class FenetrePersonnel extends javax.swing.JFrame {
      * @param evt 
      */
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        if (fenetre == 1) {         //Fênetre d'affichage des informations du client
+        if (fenetre == 1) {         //Fênetre d'affichage des informations du personnel
             jLabelTitre.setText("Données du personnel");
             jTextFieldNom.setEditable(false);
             jTextFieldPrenom.setEditable(false);
@@ -425,12 +429,16 @@ public class FenetrePersonnel extends javax.swing.JFrame {
             
             afficherPersonnel();
             comboBoxProfil();            
-        }else if (fenetre == 2) {   //Fênetre de modification d'affichage des informations du client
+        }else if (fenetre == 2) {   //Fênetre de modification d'affichage des informations du personnel
             jLabelTitre.setText("Modifier personnel");
             
             afficherPersonnel();
+            if (getIdPersonnel() == 1) {
+                jComboBoxProfil.setVisible(false);
+                jLabel7.setVisible(false);
+            }
             comboBoxProfil();
-        }else{                      //Fênetre de création d'un client
+        }else{                      //Fênetre de création d'un personnel
             jLabelTitre.setText("Ajouter personnel");  
             
             comboBoxProfil();

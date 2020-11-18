@@ -41,7 +41,6 @@ public class DoubleListes extends javax.swing.JPanel {
      * @param fenetre
      */
     public static void setFenetre(Integer fenetre) {
-        DoubleListes.fenetre = fenetre;
         if (fenetre == 1) {
             setNomList1("categorie");
             setNomList2("produit");
@@ -52,6 +51,7 @@ public class DoubleListes extends javax.swing.JPanel {
             setNomList1("personnel");
             setNomList2("vente");
         }
+        DoubleListes.fenetre = fenetre;
     }
 
     /**
@@ -123,12 +123,25 @@ public class DoubleListes extends javax.swing.JPanel {
         String tuple;
         DefaultListModel leModel = (DefaultListModel) jList1.getModel();
         leModel.clear();
-        //Afficher le choix "tous" pour séléctionner tous les produits
-        if (getFenetre() != 3) {
-            leModel.addElement("Tous");
+//        System.out.println(getFenetre());
+        if (getFenetre() == 1) {
+            setNomList1("categorie");
+            setNomList2("produit");
+        } else if (getFenetre() == 2) {
+            setNomList1("profil");
+            setNomList2("personnel");
+        } else {
+            setNomList1("personnel");
+            setNomList2("vente");
         }
+        
+        //Afficher le choix "tous" pour séléctionner tous les produits
+//        if (getFenetre() != 3) {
+        leModel.addElement("Tous");
+//        }
         try {
             String sql = "select * from " + getNomList1();
+//            System.out.println(getNomList1());
             ResultSet lesTuples = ConnexionBDD.getInstance().requeteSelection(sql);
             while (lesTuples.next()) {
                 tuple = lesTuples.getString(2);
@@ -136,6 +149,7 @@ public class DoubleListes extends javax.swing.JPanel {
                     tuple = tuple + " " + lesTuples.getString(3);
                 }
                 leModel.addElement(tuple);
+//                System.out.println(tuple);
             }
         } catch (SQLException ex) {
             Logger.getLogger(BDD.class.getName()).log(Level.SEVERE, null, ex);
@@ -216,31 +230,72 @@ public class DoubleListes extends javax.swing.JPanel {
             //Vider la liste pour pouvoir la remplir avec les bonnes informations
             listCategorie.clear();
             String tuple = null;
-            String idList1;
-            String libelleList1;
+            String idList1 = null;
+            String libelleList1 = null;
             try {
                 //Récupérer le nom des colonnes 1 et 2 de la première table
-                String recup = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '" + getNomList1() + "'";
-                ResultSet recuperation = ConnexionBDD.getInstance().requeteSelection(recup);
-                recuperation.next();
-                idList1 = recuperation.getString(1);
-                recuperation.next();
-                libelleList1 = recuperation.getString(1);
+//                String recup = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '" + getNomList1() + "'";
+//                ResultSet recuperation = ConnexionBDD.getInstance().requeteSelection(recup);
+//                recuperation.next();
+//                idList1 = recuperation.getString(1);
+//                recuperation.next();
+//                libelleList1 = recuperation.getString(1);
 
-                String sql = "select * from " + getNomList1() + ", " + getNomList2() + " where " + getNomList1() + "." + idList1 + " = " + getNomList2() + "." + idList1 + " and " + getNomList1() + "." + libelleList1 + " = '" + jList1.getSelectedValue() + "'";
-                ResultSet nomCategorie = ConnexionBDD.getInstance().requeteSelection(sql);
-                if (jList1.getSelectedIndex() == 0) {
-                    list2();
-                } else {
-                    while (nomCategorie.next()) {
-                        tuple = nomCategorie.getString(4);
-                        if (getFenetre() == 2) {        //Pour le personnel afficher nom ET PRENOM
-                            tuple = tuple + " " + nomCategorie.getString(5);
+                if (getFenetre() == 1) {
+                    idList1 = "idCategorie";
+                    libelleList1 = "libelleCategorie";
+                } else if (getFenetre() == 2) {
+                    idList1 = "idProfil";
+                    libelleList1 = "libelleProfil";
+                } 
+                
+                if(getFenetre() == 3){
+                    if (jList1.getSelectedIndex() == 0) {
+                        list2();
+                    }else{
+                        Integer idPersonnel = 0;
+
+                        String personnel = getList1Selectionnee();
+                        String infosPersonnel[] = personnel.split(" ");
+
+                        String nomPersonnel = infosPersonnel[0];
+                        String prenomPersonnel = infosPersonnel[1];
+
+                        String sql = "select idPersonnel from personnel where  nomPersonnel = '" + nomPersonnel + "' and prenomPersonnel = '" + prenomPersonnel + "'";
+                        ResultSet tuple2 = ConnexionBDD.getInstance().requeteSelection(sql);
+                        try {
+                            tuple2.next();
+                            idPersonnel = tuple2.getInt(1);
+                        } catch (SQLException ex) {
+                            Logger.getLogger(Agent.class.getName()).log(Level.SEVERE, null, ex);
                         }
-                        //Ajouter les éléments de la base de données un par un
-                        listCategorie.addElement(tuple);
+
+                        String sql2 = "select * from vente where personnel.idPersonnel = vente.idPersonnel and personnel.idPersonnel = '"+idPersonnel+"' ";
+                        ResultSet nomCategorie = ConnexionBDD.getInstance().requeteSelection(sql);
+                        while (nomCategorie.next()) {
+                            tuple = "Vente " + nomCategorie.getString(1) + " du " + nomCategorie.getString(2) + " pour " + nomClient(nomCategorie.getString(3)) + " par " + nomPerso(nomCategorie.getString(4));
+                            listCategorie.addElement(tuple);
+                        }
+                    }
+                }else{
+                    
+                    if (jList1.getSelectedIndex() == 0) {
+                        list2();
+                    } else {
+                        String sql = "select * from " + getNomList1() + ", " + getNomList2() + " where " + getNomList1() + "." + idList1 + " = " + getNomList2() + "." + idList1 + " and " + getNomList1() + "." + libelleList1 + " = '" + jList1.getSelectedValue() + "'";
+                        ResultSet nomCategorie = ConnexionBDD.getInstance().requeteSelection(sql);
+                        while (nomCategorie.next()) {
+                            tuple = nomCategorie.getString(4);
+                            if (getFenetre() == 2) {        //Pour le personnel afficher nom ET PRENOM
+                                tuple = tuple + " " + nomCategorie.getString(5);
+                            }
+                            //Ajouter les éléments de la base de données un par un
+                            listCategorie.addElement(tuple);
+                        }
                     }
                 }
+                
+                
             } catch (SQLException ex) {
                 Logger.getLogger(BDD.class.getName()).log(Level.SEVERE, null, ex);
             }

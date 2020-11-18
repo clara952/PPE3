@@ -23,12 +23,12 @@ public class ConnexionBDD {
      *
      */
 //    private static String nomServeur = "localhost";
-//    private static String nomServeur = "10.0.10.196";
-    private static String nomServeur = "10.0.10.129";
+    private static String nomServeur = "10.0.10.196";
+//    private static String nomServeur = "10.0.10.129";
 //    private static String port = "3308";
     private static String port = "3306";
-//    private static String nomBdd = "tablette";
-    private static String nomBdd = "tablette_bigeard";
+    private static String nomBdd = "tablette";
+//    private static String nomBdd = "tablette_bigeard";
     private static String nomUtilisateur = "root";
     private static String motDePasse = "root";
 
