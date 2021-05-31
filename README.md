@@ -44,6 +44,11 @@ Possible pour les personnes déjà inscrite dans la base de données, soit agent
 * Gestion des clients
 * Statistiques (chiffre d'affaire annuel non codé)
 
+##### Tag
+* Ajout list Tag
+* Ajouter Tag dans BDD
+* Modifier Tag (en cours au niveau produits)
+
 #### Documentation
 * Script SQL
 * MCD BDD
